@@ -42,6 +42,8 @@ def main():
                 break
         else:
             sleep(30)
+            print("It's actually working:")
+            
     
 if __name__ == "__main__":
     main()
