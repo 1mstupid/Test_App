@@ -1,8 +1,7 @@
 import requests
 import yagmail
 from datetime import *
-
-current_hour = datetime.now().strftime('%H')
+from time import sleep
 
 
 Urls = ["https://api.sunrise-sunset.org/json", "http://api.open-notify.org/iss-now.json"]
@@ -33,17 +32,16 @@ def main():
     
     hour_sunset = data["results"]["sunset"].split("T")[1].split(":")[0]
 
-    if int(current_hour) > int(hour_sunset) or int(hour_sunrise) < 9:
-        print("It's night.")
-        cords = isslocation()
-
-        if (CORDS[0]- 5 <= cords[0] <= CORDS[0] + 5) and  (CORDS[1]- 5 <= cords[1] <= CORDS[1] + 5):
-            yag = yagmail.SMTP("whatli3swithin@gmail.com", "mscq iaej waoz eugj")
-            yag.send("italolv20@gmail.com", "KYS", "You Dirty little fag-boy, you dispicaple piece of trash, today you were blessed by the heavens and didn't even realise, too blind to notice and too scared to seek. Yes that right, today you missed a golden opportunity, to gaze into the start and watching one that we placed there. Anyway, you didn't remeber to check inbox and see the iss, peace.")
-
-    else:
-        print("Still day, bozo")
-        print(isslocation())
+    while True:
+        current_hour = datetime.now().strftime('%H')
+        if int(current_hour) > int(hour_sunset) or int(hour_sunrise) < 9:
+            cords = isslocation()
+            if (CORDS[0]- 5 <= cords[0] <= CORDS[0] + 5) and  (CORDS[1]- 5 <= cords[1] <= CORDS[1] + 5):
+                yag = yagmail.SMTP("whatli3swithin@gmail.com", "mscq iaej waoz eugj")
+                yag.send("italolv20@gmail.com", "KYS", "You Dirty little fag-boy, you dispicaple piece of trash, today you were blessed by the heavens and didn't even realise, too blind to notice and too scared to seek. Yes that right, today you missed a golden opportunity, to gaze into the start and watching one that we placed there. Anyway, you didn't remeber to check inbox and see the iss, peace.")
+                break
+        else:
+            sleep(30)
     
 if __name__ == "__main__":
     main()
