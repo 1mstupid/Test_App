@@ -42,7 +42,8 @@ def main():
                 break
         else:
             sleep(30)
-            print("It's actually working:")
+            yag = yagmail.SMTP("whatli3swithin@gmail.com", "mscq iaej waoz eugj")
+            yag.send("italolv20@gmail.com", "KYS", "It's working bro")
             
     
 if __name__ == "__main__":
